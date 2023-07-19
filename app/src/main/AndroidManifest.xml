@@ -13,9 +13,36 @@
         android:theme="@style/Theme.SiSChatApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.ConfirmRegistation"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.RegisterFinalPage"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.RegisterPageOne"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.OtpVerify"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.Login"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SiSChatApp" />
+        <activity
             android:name=".ui.WelcomeScreen"
             android:exported="true"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.SiSChatApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

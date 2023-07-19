@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/favorite"
+        android:icon="@drawable/back_icon"
+        android:contentDescription="@string/back_icon"
+        app:showAsAction="ifRoom"
+        android:title="back_icon" />
+
+    <item
+        android:id="@+id/app_bar"
+        android:title="@string/otp_verification"
+        android:contentDescription="@string/otp_verification"
+        app:showAsAction="ifRoom" />
+
+</menu>
