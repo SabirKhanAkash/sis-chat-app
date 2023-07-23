@@ -1,0 +1,21 @@
+<!-- res/layout/custom_toast.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom_toast_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/dark_gray">
+
+    <TextView
+        android:fontFamily="@font/inter_regular"
+        android:id="@+id/custom_toast_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toast_bg"
+        android:textColor="@android:color/white"
+        android:text="This is a top-side toast!"
+        android:textSize="16sp"/>
+
+</LinearLayout>

@@ -10,7 +10,7 @@
     <string name="input_phone_number">Input Phone Number</string>
     <string name="back_icon">back_icon</string>
     <string name="otp_verification">OTP Verification</string>
-    <string name="otp_prompt_msg">Check your SMS messages. we\'ve sent the verification code to (+XX) XXXXXXXXX.</string>
+    <string name="otp_prompt_msg">Check your SMS messages. we\'ve sent the verification code to </string>
     <string name="expiration_msg">Code will expire on</string>
     <string name="invalid_code_msg">Verifications code is invalid</string>
     <string name="invalid_phone_no_msg">Your phone number is invalid</string>

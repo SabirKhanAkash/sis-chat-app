@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
     android:weightSum="1"
@@ -77,6 +78,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -93,7 +95,7 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <EditText
+                <!--<EditText
                     android:id="@+id/otp_digit_1"
                     android:layout_width="74sp"
                     android:layout_height="74sp"
@@ -143,13 +145,39 @@
                     android:maxLength="1"
                     android:textAlignment="center"
                     android:textSize="32sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold" />-->
+
+                <com.mukeshsolanki.OtpView
+                    android:id="@+id/otp_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:textAllCaps="true"
+                    android:focusableInTouchMode="true"
+                    app:OtpHideLineWhenFilled="true"
+                    app:OtpItemCount="4"
+                    android:itemBackground="@drawable/otp_bg"
+                    android:textColor="@color/dark_gray"
+                    app:OtpItemSpacing="12sp"
+                    app:OtpState_filled="true"
+                    android:textSize="32sp"
+                    android:fontFamily="@font/inter_regular"
+                    android:textStyle="bold"
+                    app:OtpViewType="rectangle"
+                    app:OtpItemHeight="74sp"
+                    app:OtpItemWidth="74sp"
+                    app:OtpLineColor="@color/gray_color"
+                    app:OtpItemRadius="6dp"
+                    />
+
             </LinearLayout>
 
             <TextView
+                android:id="@+id/wrong_otp_prompt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textColor="@color/red_color"
                 android:fontFamily="@font/inter_regular"
                 android:gravity="center"
                 android:paddingTop="20sp"
