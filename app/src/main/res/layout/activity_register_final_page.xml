@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
     android:weightSum="1"
@@ -87,19 +88,29 @@
                 android:textColor="@color/light_gray"
                 android:textSize="16sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <FrameLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="150sp"
+                    app:civ_border_width="1sp"
+                    app:civ_border_color="@color/gray_color"
+                    android:layout_height="150sp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/upload_icon"
+                    android:id="@+id/upload_btn"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/upload_icon"
-                    android:id="@+id/upload_btn"/>
+                    android:src="@drawable/upload_plus_icon"
+                    android:layout_gravity="bottom|right"/>
 
-            </LinearLayout>
+            </FrameLayout>
 
         </LinearLayout>
 

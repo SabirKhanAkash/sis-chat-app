@@ -1,19 +1,19 @@
 package com.akash.sischatapp.ui
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
 import androidx.activity.ComponentActivity
-import com.akash.sischatapp.R
 import com.akash.sischatapp.databinding.ActivityRegisterPageOneBinding
-import com.akash.sischatapp.util.LoadingDialog
+import com.akash.sischatapp.util.SharedPref
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
 
 class RegisterPageOne : ComponentActivity() {
+    private val sharedPref: SharedPref = SharedPref()
     var binding: ActivityRegisterPageOneBinding? = null
     var auth: FirebaseAuth? = null
     var database: FirebaseDatabase? = null
@@ -32,18 +32,26 @@ class RegisterPageOne : ComponentActivity() {
             val fullName: String = binding!!.fullNameEt.text.toString()
             val userName: String = binding!!.usernameEt.text.toString()
             val bio: String = binding!!.bioEt.text.toString()
-            if(fullName.isEmpty())
-                binding!!.fullNameEt.error = "Please type your full name"
-            if(userName.isEmpty())
-                binding!!.usernameEt.error = "Please type a username"
+
+            val isFullNameValid = Pattern.compile("^[a-zA-Z ]+$").matcher(fullName).matches()
+            val isUserNameValid = Pattern.compile("^[a-zA-Z0-9._]+$").matcher(userName).matches()
+            if(fullName.isEmpty() || !isFullNameValid)
+                binding!!.fullNameEt.error = "Please type your full valid name"
+            else
+                sharedPref!!.setString(applicationContext, "full_name", fullName)
+            if(userName.isEmpty() || !isUserNameValid)
+                binding!!.usernameEt.error = "Please type a valid username"
+            else
+                sharedPref!!.setString(applicationContext, "user_name", userName)
             if(bio.isEmpty())
                 binding!!.bioEt.error = "Please type something about yourself"
+            else
+                sharedPref!!.setString(applicationContext, "bio", bio)
 
-            val intent = Intent(this@RegisterPageOne, RegisterFinalPage::class.java)
-            intent.putExtra("full_name", fullName)
-            intent.putExtra("user_name", userName)
-            intent.putExtra("bio", bio)
-            startActivity(intent)
+            if(fullName.isNotEmpty() && userName.isNotEmpty() && bio.isNotEmpty()) {
+                startActivity(Intent(this@RegisterPageOne, RegisterFinalPage::class.java))
+            }
+
         }
     }
 }

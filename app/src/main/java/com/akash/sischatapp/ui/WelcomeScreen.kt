@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
 import com.akash.sischatapp.R
+import com.akash.sischatapp.util.SharedPref
 import com.google.firebase.appcheck.ktx.appCheck
 import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
 import com.google.firebase.ktx.Firebase
@@ -12,6 +13,7 @@ import com.google.firebase.ktx.initialize
 
 class WelcomeScreen : ComponentActivity() {
     private lateinit var _join_now_btn: Button
+    private val sharedPref: SharedPref = SharedPref()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +23,12 @@ class WelcomeScreen : ComponentActivity() {
         Firebase.appCheck.installAppCheckProviderFactory(
             PlayIntegrityAppCheckProviderFactory.getInstance(),
         )
+
+
+        if(sharedPref!!.getString(applicationContext,"is_registered") == "true") {
+            startActivity(Intent(this@WelcomeScreen, ConfirmRegistation::class.java))
+            finish()
+        }
 
         _join_now_btn.setOnClickListener {
             startActivity(Intent(this, Login::class.java))

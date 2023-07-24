@@ -4,11 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import com.akash.sischatapp.databinding.ActivityLoginBinding
+import com.akash.sischatapp.util.SharedPref
 import com.google.firebase.auth.FirebaseAuth
 import showTopSideToast
 
 
 class Login : ComponentActivity() {
+    private val sharedPref: SharedPref = SharedPref()
     var binding: ActivityLoginBinding? = null
     var auth: FirebaseAuth? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +19,7 @@ class Login : ComponentActivity() {
         setContentView(binding!!.root)
 
         auth = FirebaseAuth.getInstance()
-        if(auth!!.currentUser != null) {
+        if(auth!!.currentUser != null && sharedPref!!.getString(applicationContext,"is_registered") == "true") {
             val intent = Intent(this@Login, ConfirmRegistation::class.java)
             startActivity(intent)
             finish()

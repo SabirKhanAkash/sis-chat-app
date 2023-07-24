@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
-import showTopSideToast
 import java.util.concurrent.TimeUnit
 
 class OtpVerify : ComponentActivity() {
@@ -79,13 +78,16 @@ class OtpVerify : ComponentActivity() {
         }
 
         binding!!.otpView.setOtpCompletionListener { otp ->
+            loadingDialog.startLoading()
             val credential = PhoneAuthProvider.getCredential(verificationId!!, otp)
             auth!!.signInWithCredential(credential).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    loadingDialog.dismissLoading()
                     var userDetails: FirebaseUser? = task.result.user
                     startActivity(Intent(this, RegisterPageOne::class.java))
                     finishAffinity()
                 } else {
+                    loadingDialog.dismissLoading()
                     binding!!.otpView.setText("")
                     binding!!.wrongOtpPrompt.visibility = View.VISIBLE
                     binding!!.otpView.setLineColor(Color.parseColor("#FB0000")) //RED
