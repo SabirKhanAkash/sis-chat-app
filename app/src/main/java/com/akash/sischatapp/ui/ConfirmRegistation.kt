@@ -5,16 +5,16 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
 import com.akash.sischatapp.R
+import com.akash.sischatapp.databinding.ActivityConfirmRegistationBinding
 
 class ConfirmRegistation : ComponentActivity() {
-    private lateinit var _register: Button
+    var binding: ActivityConfirmRegistationBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_confirm_registation)
+        binding = ActivityConfirmRegistationBinding.inflate(layoutInflater)
+        setContentView(binding!!.root)
 
-        _register = findViewById(R.id.continue_btn)
-
-        _register.setOnClickListener {
+        binding!!.continueBtn.setOnClickListener {
             startActivity(Intent(this, WelcomeScreen::class.java))
         }
     }

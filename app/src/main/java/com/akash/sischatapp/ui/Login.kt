@@ -6,7 +6,7 @@ import androidx.activity.ComponentActivity
 import com.akash.sischatapp.databinding.ActivityLoginBinding
 import com.akash.sischatapp.util.SharedPref
 import com.google.firebase.auth.FirebaseAuth
-import showTopSideToast
+import showTopToast
 
 
 class Login : ComponentActivity() {
@@ -31,7 +31,7 @@ class Login : ComponentActivity() {
                 intent.putExtra("phone", binding!!.phoneNumberEt.text.toString())
                 startActivity(intent)
             } else {
-                showTopSideToast(this, "Enter a valid phone number", "short")
+                showTopToast(this, "Enter a valid phone number", "short", "neutral")
             }
         }
     }

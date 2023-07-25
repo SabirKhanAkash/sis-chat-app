@@ -10,8 +10,11 @@ import com.akash.sischatapp.util.LoadingDialog
 import com.akash.sischatapp.util.SharedPref
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import showTopSideToast
+import showTopToast
+import java.lang.Exception
 import java.util.Date
 
 class RegisterFinalPage : ComponentActivity() {
@@ -30,6 +33,7 @@ class RegisterFinalPage : ComponentActivity() {
         auth = FirebaseAuth.getInstance()
         storage = FirebaseStorage.getInstance()
         database = FirebaseDatabase.getInstance()
+//        val database = Firebase.database
 
         binding!!.back.setOnClickListener { onBackPressed() }
         binding!!.uploadBtn.setOnClickListener {
@@ -40,17 +44,8 @@ class RegisterFinalPage : ComponentActivity() {
         }
         binding!!.continueBtn.setOnClickListener {
             loadingDialog.startLoading()
-            if (selectedImage == null) {
-                loadingDialog.dismissLoading()
-                showTopSideToast(
-                    this@RegisterFinalPage,
-                    "Please upload your image",
-                    "short"
-                )
-            }
-            else {
-                loadingDialog.dismissLoading()
-                val reference = storage!!.reference.child("profile").child(auth!!.uid!!)
+            if (selectedImage != null) {
+                val reference = storage!!.reference.child("Profile").child(auth!!.uid!!)
                 reference.putFile(selectedImage!!).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         reference.downloadUrl.addOnCompleteListener { uri ->
@@ -58,32 +53,46 @@ class RegisterFinalPage : ComponentActivity() {
                             val uid = auth!!.uid
                             val phone = auth!!.currentUser!!.phoneNumber
                             val fullName: String? =
-                                sharedPref!!.getString(applicationContext, "full_name")
+                                sharedPref.getString(applicationContext, "full_name")
                             val userName: String? =
-                                sharedPref!!.getString(applicationContext, "user_name")
-                            val bio: String? = sharedPref!!.getString(applicationContext, "bio")
+                                sharedPref.getString(applicationContext, "user_name")
+                            val bio: String? = sharedPref.getString(applicationContext, "bio")
                             val user = User(uid, fullName, userName, bio, phone, imageUri)
-                            database!!.reference
-                                .child("users")
-                                .child(uid!!)
-                                .setValue(user)
-                                .addOnCompleteListener {
+                            loadingDialog.dismissLoading()
+                            try {
+                                database!!.reference
+                                    .child("users")
+                                    .child(uid!!)
+                                    .setValue(user)
+                                    .addOnCompleteListener { userTask ->
 //                                    loadingDialog.dismissLoading()
-                                    sharedPref.setString(applicationContext, "is_registered", "true")
-                                    startActivity(Intent(this, ConfirmRegistation::class.java))
-                                    finish()
-                                }
+                                        if(userTask.isSuccessful) {
+                                            sharedPref.setString(applicationContext, "is_registered", "true")
+                                            startActivity(Intent(this@RegisterFinalPage, ConfirmRegistation::class.java))
+                                            finish()
+                                        }
+                                        else {
+                                            showTopToast(applicationContext, "Something went wrong! Try again", "short", "negative")
+                                        }
+                                    }
+                                    .addOnFailureListener {
+                                        showTopToast(applicationContext, "CANCELLED", "short", "neutral")
+                                    }
+                            } catch (e: Exception) {
+                                showTopToast(applicationContext, e.printStackTrace().toString(), "long", "neutral")
+                            }
                         }
                     }
                     else {
                         val uid = auth!!.uid
                         val phone = auth!!.currentUser!!.phoneNumber
                         val fullName: String? =
-                            sharedPref!!.getString(applicationContext, "full_name")
+                            sharedPref.getString(applicationContext, "full_name")
                         val userName: String? =
-                            sharedPref!!.getString(applicationContext, "user_name")
-                        val bio: String? = sharedPref!!.getString(applicationContext, "bio")
+                            sharedPref.getString(applicationContext, "user_name")
+                        val bio: String? = sharedPref.getString(applicationContext, "bio")
                         val user = User(uid, fullName, userName, bio, phone, "No Image")
+                        loadingDialog.dismissLoading()
                         database!!.reference
                             .child("users")
                             .child(uid!!)
@@ -97,6 +106,15 @@ class RegisterFinalPage : ComponentActivity() {
                     }
                 }
             }
+            else {
+                loadingDialog.dismissLoading()
+                showTopToast(
+                    this@RegisterFinalPage,
+                    "Please upload your image",
+                    "short",
+                    "neutral"
+                )
+            }
         }
     }
 
@@ -109,7 +127,7 @@ class RegisterFinalPage : ComponentActivity() {
                 val storage = FirebaseStorage.getInstance()
                 val time = Date().time
                 val reference = storage.reference
-                    .child("profile")
+                    .child("Profile")
                     .child(time.toString() + "")
                 reference.putFile(uri!!).addOnCompleteListener { task ->
                     if(task.isSuccessful) {
@@ -117,7 +135,7 @@ class RegisterFinalPage : ComponentActivity() {
                             val filePath = uri.toString()
                             val obj = HashMap<String, Any>()
                             obj["image"] = filePath
-                            database!!.reference
+                            Firebase.database.reference
                                 .child("users")
                                 .child(FirebaseAuth.getInstance().uid!!)
                                 .updateChildren(obj).addOnSuccessListener {  }

@@ -2,7 +2,7 @@
     android:id="@+id/custom_toast_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/toast_bg"
+    android:background="@drawable/negaitive_toast_bg"
     android:orientation="vertical"
     android:padding="12dp">
 
@@ -14,7 +14,7 @@
         android:fontFamily="@font/inter_regular"
         android:gravity="center"
         android:text="Something went wrong!"
-        android:textColor="@android:color/white"
+        android:textColor="@color/toast_text_red"
         android:textSize="16sp"
         android:textStyle="bold" />
 

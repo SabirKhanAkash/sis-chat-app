@@ -9,6 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray_color">#CCD1D7</color>
     <color name="red_color">#FB0000</color>
+    <color name="toast_red">#efd7d7</color>
+    <color name="toast_text_red">#ab527b</color>
+    <color name="toast_green">#d7eccf</color>
+    <color name="toast_text_green">#3c763d</color>
+    <color name="toast_blue">#abcee5</color>
+    <color name="toast_text_blue">#3c647c</color>
     <color name="blue_btn_color">#0068DE</color>
     <color name="light_gray">#667586</color>
     <color name="regular_gray">#33475E</color>

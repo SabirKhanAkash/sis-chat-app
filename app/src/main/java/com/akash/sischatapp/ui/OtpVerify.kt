@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
+import showTopToast
 import java.util.concurrent.TimeUnit
 
 class OtpVerify : ComponentActivity() {
@@ -49,10 +50,10 @@ class OtpVerify : ComponentActivity() {
 
                 override fun onVerificationFailed(p0: FirebaseException) {
                     val msg: FirebaseException = p0
-                    Log.i("TAG", msg.toString())
-//                    showTopSideToast(this@OtpVerify, "OTP sent successfully", "short")
-//                    loadingDialog.dismissLoading()
-//                    finish()
+                    Log.i("TAG", msg.localizedMessage!!.toString())
+                    showTopToast(this@OtpVerify, "Sorry! " + msg.localizedMessage!!.toString(), "short", "negative")
+                    loadingDialog.dismissLoading()
+                    finish()
                 }
 
                 override fun onCodeSent(
