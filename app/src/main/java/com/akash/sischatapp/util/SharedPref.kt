@@ -3,7 +3,7 @@ package com.akash.sischatapp.util
 import android.content.Context
 
 class SharedPref {
-    private val PREFS_NAME = "spWalPack"
+    private val PREFS_NAME = "spSiSChat"
 
     fun getBoolean(context: Context, key: String?): Boolean {
         return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)

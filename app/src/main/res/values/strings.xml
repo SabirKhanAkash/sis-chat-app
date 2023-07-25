@@ -30,4 +30,8 @@
     <string name="start_chat">Start Chatting</string>
     <string name="success_prompt">Now You All Setup</string>
     <string name="profile_creation_prompt">Your profile has been successfully created</string>
+    <string name="title_activity_app_bottom_nav">AppBottomNav</string>
+    <string name="title_home">Home</string>
+    <string name="title_call">Call</string>
+    <string name="title_profile">Profile</string>
 </resources>

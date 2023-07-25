@@ -20,7 +20,7 @@ class Login : ComponentActivity() {
 
         auth = FirebaseAuth.getInstance()
         if(auth!!.currentUser != null && sharedPref!!.getString(applicationContext,"is_registered") == "true") {
-            val intent = Intent(this@Login, ConfirmRegistation::class.java)
+            val intent = Intent(this@Login, AppBottomNav::class.java)
             startActivity(intent)
             finish()
         }

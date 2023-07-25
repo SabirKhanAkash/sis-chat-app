@@ -32,7 +32,8 @@ class RegisterFinalPage : ComponentActivity() {
 
         auth = FirebaseAuth.getInstance()
         storage = FirebaseStorage.getInstance()
-        database = FirebaseDatabase.getInstance()
+        database = FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app")
+
 //        val database = Firebase.database
 
         binding!!.back.setOnClickListener { onBackPressed() }
@@ -135,7 +136,7 @@ class RegisterFinalPage : ComponentActivity() {
                             val filePath = uri.toString()
                             val obj = HashMap<String, Any>()
                             obj["image"] = filePath
-                            Firebase.database.reference
+                            database!!.reference
                                 .child("users")
                                 .child(FirebaseAuth.getInstance().uid!!)
                                 .updateChildren(obj).addOnSuccessListener {  }

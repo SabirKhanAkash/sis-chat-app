@@ -14,9 +14,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SiSChatApp"
+        android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.AppBottomNav"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.ConfirmRegistation"
             android:exported="false"
@@ -41,14 +46,12 @@
             android:name=".ui.Login"
             android:exported="false"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.SiSChatApp" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.WelcomeScreen"
             android:exported="true"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.SiSChatApp">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

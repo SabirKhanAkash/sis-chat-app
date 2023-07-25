@@ -15,7 +15,7 @@ class ConfirmRegistation : ComponentActivity() {
         setContentView(binding!!.root)
 
         binding!!.continueBtn.setOnClickListener {
-            startActivity(Intent(this, WelcomeScreen::class.java))
+            startActivity(Intent(this, AppBottomNav::class.java))
         }
     }
 }

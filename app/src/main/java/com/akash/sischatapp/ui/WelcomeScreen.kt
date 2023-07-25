@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.akash.sischatapp.R
 import com.akash.sischatapp.util.SharedPref
 import com.google.firebase.appcheck.ktx.appCheck
@@ -11,7 +12,7 @@ import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderF
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 
-class WelcomeScreen : ComponentActivity() {
+class WelcomeScreen : AppCompatActivity() {
     private lateinit var _join_now_btn: Button
     private val sharedPref: SharedPref = SharedPref()
 
@@ -26,7 +27,7 @@ class WelcomeScreen : ComponentActivity() {
 
 
         if(sharedPref!!.getString(applicationContext,"is_registered") == "true") {
-            startActivity(Intent(this@WelcomeScreen, ConfirmRegistation::class.java))
+            startActivity(Intent(this@WelcomeScreen, AppBottomNav::class.java))
             finish()
         }
 
