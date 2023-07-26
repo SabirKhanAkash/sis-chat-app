@@ -3,6 +3,7 @@ package com.akash.sischatapp.ui
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.akash.sischatapp.databinding.ActivityRegisterPageOneBinding
 import com.akash.sischatapp.util.SharedPref
 import com.google.firebase.auth.FirebaseAuth
@@ -12,7 +13,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 
-class RegisterPageOne : ComponentActivity() {
+class RegisterPageOne : AppCompatActivity() {
     private val sharedPref: SharedPref = SharedPref()
     var binding: ActivityRegisterPageOneBinding? = null
     var auth: FirebaseAuth? = null

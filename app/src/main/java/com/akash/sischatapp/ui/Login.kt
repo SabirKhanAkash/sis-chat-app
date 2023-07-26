@@ -3,13 +3,14 @@ package com.akash.sischatapp.ui
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.akash.sischatapp.databinding.ActivityLoginBinding
 import com.akash.sischatapp.util.SharedPref
 import com.google.firebase.auth.FirebaseAuth
 import showTopToast
 
 
-class Login : ComponentActivity() {
+class Login : AppCompatActivity() {
     private val sharedPref: SharedPref = SharedPref()
     var binding: ActivityLoginBinding? = null
     var auth: FirebaseAuth? = null

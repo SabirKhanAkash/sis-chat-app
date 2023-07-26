@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.akash.sischatapp.R
 import com.akash.sischatapp.databinding.ActivityOtpVerifyBinding
 import com.akash.sischatapp.util.LoadingDialog
@@ -20,7 +21,7 @@ import com.google.firebase.auth.PhoneAuthProvider
 import showTopToast
 import java.util.concurrent.TimeUnit
 
-class OtpVerify : ComponentActivity() {
+class OtpVerify : AppCompatActivity() {
     var countryCode: String = "+88"
     var binding: ActivityOtpVerifyBinding? = null
     var auth: FirebaseAuth? = null

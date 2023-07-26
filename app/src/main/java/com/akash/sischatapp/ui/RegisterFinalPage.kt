@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.akash.sischatapp.databinding.ActivityRegisterFinalPageBinding
 import com.akash.sischatapp.model.User
 import com.akash.sischatapp.util.LoadingDialog
@@ -17,7 +18,7 @@ import showTopToast
 import java.lang.Exception
 import java.util.Date
 
-class RegisterFinalPage : ComponentActivity() {
+class RegisterFinalPage : AppCompatActivity() {
     var binding: ActivityRegisterFinalPageBinding? = null
     var auth: FirebaseAuth? = null
     var database: FirebaseDatabase? = null
@@ -59,14 +60,14 @@ class RegisterFinalPage : ComponentActivity() {
                                 sharedPref.getString(applicationContext, "user_name")
                             val bio: String? = sharedPref.getString(applicationContext, "bio")
                             val user = User(uid, fullName, userName, bio, phone, imageUri)
-                            loadingDialog.dismissLoading()
+//                            loadingDialog.dismissLoading()
                             try {
                                 database!!.reference
                                     .child("users")
                                     .child(uid!!)
                                     .setValue(user)
                                     .addOnCompleteListener { userTask ->
-//                                    loadingDialog.dismissLoading()
+                                    loadingDialog.dismissLoading()
                                         if(userTask.isSuccessful) {
                                             sharedPref.setString(applicationContext, "is_registered", "true")
                                             startActivity(Intent(this@RegisterFinalPage, ConfirmRegistation::class.java))

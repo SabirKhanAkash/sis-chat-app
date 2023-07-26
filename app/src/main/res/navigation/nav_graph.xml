@@ -2,21 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.akash.sischatapp.ui.home.HomeFragment"
+        android:name="com.akash.sischatapp.ui.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/callFragment"
-        android:name="com.akash.sischatapp.ui.call.CallFragment"
+        android:name="com.akash.sischatapp.ui.fragment.CallFragment"
         android:label="fragment_call"
         tools:layout="@layout/fragment_call" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.akash.sischatapp.ui.profile.ProfileFragment"
+        android:name="com.akash.sischatapp.ui.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
