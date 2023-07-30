@@ -45,10 +45,11 @@
                         app:civ_border_width="3sp" />
 
                     <com.agrawalsuneet.loaderspack.loaders.CurvesLoader
+                        android:id="@+id/loader"
                         android:layout_width="150sp"
                         android:layout_height="150sp"
-                        android:layout_marginTop="47sp"
                         android:layout_gravity="center"
+                        android:layout_marginTop="47sp"
                         app:curves_animDuration="800"
                         app:curves_curveColor="@color/blue_btn_color"
                         app:curves_curveSweepAngle="180"
@@ -56,7 +57,6 @@
                         app:curves_distanceBetweenCurves="4dp"
                         app:curves_interpolator="@android:anim/linear_interpolator"
                         app:curves_noOfCurves="5"
-                        android:id="@+id/loader"
                         app:curves_outermostCurveRadius="30dp" />
 
                 </FrameLayout>
@@ -118,14 +118,30 @@
                         android:textColor="#808C9A"
                         android:textSize="10sp" />
 
-                    <TextView
-                        android:id="@+id/username"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_regular"
-                        android:text="username"
-                        android:textColor="@color/regular_gray"
-                        android:textSize="14sp" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_regular"
+                            android:text="\@"
+                            android:textColor="@color/regular_gray"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_regular"
+                            android:text="username"
+                            android:textColor="@color/regular_gray"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
 
                     <View
                         android:layout_width="match_parent"
@@ -188,10 +204,10 @@
                         android:textSize="14sp" />
 
                     <View
-                        android:layout_marginStart="12sp"
-                        android:layout_marginEnd="12sp"
                         android:layout_width="match_parent"
                         android:layout_height="1sp"
+                        android:layout_marginStart="12sp"
+                        android:layout_marginEnd="12sp"
                         android:background="#E5E8EB" />
 
                     <TextView
@@ -212,10 +228,10 @@
                         android:textSize="14sp" />
 
                     <View
-                        android:layout_marginStart="12sp"
-                        android:layout_marginEnd="12sp"
                         android:layout_width="match_parent"
                         android:layout_height="1sp"
+                        android:layout_marginStart="12sp"
+                        android:layout_marginEnd="12sp"
                         android:background="#E5E8EB" />
 
                     <TextView
