@@ -10,18 +10,18 @@ var customToastView: View? = null
 
 fun showTopToast(context: Context, message: String, duration: String, type: String) {
     val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    if(type == "positive")
+    if (type == "positive")
         customToastView = inflater.inflate(R.layout.positive_toast_layout, null)
-    if(type == "negative")
+    if (type == "negative")
         customToastView = inflater.inflate(R.layout.negative_toast_layout, null)
-    if(type == "neutral")
+    if (type == "neutral")
         customToastView = inflater.inflate(R.layout.neutral_toast_layout, null)
 
     val toast = Toast(context)
     toast.view = customToastView
-    if(duration == "short")
+    if (duration == "short")
         toast.duration = Toast.LENGTH_SHORT
-    else if(duration == "long")
+    else if (duration == "long")
         toast.duration = Toast.LENGTH_LONG
     toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 25, 25)
 

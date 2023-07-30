@@ -25,42 +25,6 @@
                     android:layout_height="187sp"
                     android:background="@drawable/cover_bg">
 
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="48sp"
-                        android:layout_gravity="top"
-                        android:background="@android:color/transparent"
-                        android:elevation="25sp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:visibility="invisible"
-                            android:id="@+id/back"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left|center"
-                            android:paddingStart="20sp"
-                            android:paddingTop="12sp"
-                            android:paddingEnd="12sp"
-                            android:paddingBottom="12sp"
-                            android:src="@drawable/back_icon"
-                            app:tint="@color/white" />
-
-                        <TextView
-                            android:visibility="invisible"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left|center"
-                            android:layout_marginStart="52sp"
-                            android:fontFamily="@font/inter_regular"
-                            android:gravity="center"
-                            android:text="@string/back"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                    </FrameLayout>
-
                 </FrameLayout>
 
                 <FrameLayout
@@ -78,13 +42,22 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/upload_icon"
                         app:civ_border_color="@color/gray_color"
-                        app:civ_border_width="1sp" />
+                        app:civ_border_width="3sp" />
 
-                    <!--            <ImageView-->
-                    <!--                android:layout_width="wrap_content"-->
-                    <!--                android:layout_height="wrap_content"-->
-                    <!--                android:src="@drawable/upload_plus_icon"-->
-                    <!--                android:layout_gravity="bottom|right"/>-->
+                    <com.agrawalsuneet.loaderspack.loaders.CurvesLoader
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
+                        android:layout_marginTop="47sp"
+                        android:layout_gravity="center"
+                        app:curves_animDuration="800"
+                        app:curves_curveColor="@color/blue_btn_color"
+                        app:curves_curveSweepAngle="180"
+                        app:curves_curveWidth="3.5dp"
+                        app:curves_distanceBetweenCurves="4dp"
+                        app:curves_interpolator="@android:anim/linear_interpolator"
+                        app:curves_noOfCurves="5"
+                        android:id="@+id/loader"
+                        app:curves_outermostCurveRadius="30dp" />
 
                 </FrameLayout>
 
@@ -99,7 +72,7 @@
                 android:fontFamily="@font/inter_regular"
                 android:gravity="center"
                 android:paddingTop="10sp"
-                android:text="Sabir Khan Akash"
+                android:text="your full name"
                 android:textColor="@color/dark_gray"
                 android:textSize="20sp" />
 
@@ -114,7 +87,7 @@
                 android:gravity="center"
                 android:paddingStart="10sp"
                 android:paddingEnd="10sp"
-                android:text="01794598178"
+                android:text="your phone number"
                 android:textColor="@color/dark_gray"
                 android:textSize="14sp" />
 
@@ -150,7 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/inter_regular"
-                        android:text="\@akash"
+                        android:text="username"
                         android:textColor="@color/regular_gray"
                         android:textSize="14sp" />
 
@@ -174,7 +147,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/inter_regular"
-                        android:text="Never Give Up!"
+                        android:text="your bio"
                         android:textColor="@color/regular_gray"
                         android:textSize="14sp" />
 

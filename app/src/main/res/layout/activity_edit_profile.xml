@@ -85,6 +85,20 @@
                             android:src="@drawable/upload_icon"
                             android:id="@+id/upload_btn"/>
 
+                        <com.agrawalsuneet.loaderspack.loaders.CurvesLoader
+                            android:layout_width="150sp"
+                            android:layout_height="150sp"
+                            android:layout_gravity="center"
+                            app:curves_animDuration="800"
+                            app:curves_curveColor="@color/blue_btn_color"
+                            app:curves_curveSweepAngle="180"
+                            app:curves_curveWidth="3.5dp"
+                            app:curves_distanceBetweenCurves="4dp"
+                            app:curves_interpolator="@android:anim/linear_interpolator"
+                            app:curves_noOfCurves="5"
+                            android:id="@+id/loader"
+                            app:curves_outermostCurveRadius="30dp" />
+
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

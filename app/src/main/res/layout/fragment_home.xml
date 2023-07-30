@@ -1,15 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.HomeFragment">
+    tools:context=".ui.fragment.HomeFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:gravity="center"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="home_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="right">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/create_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/create_msg_icon"
+            android:paddingTop="10sp"
+            android:paddingBottom="10sp"
+            android:paddingStart="20sp"
+            android:paddingEnd="20sp"/>
+
+        <LinearLayout
+            android:weightSum="1"
+            android:paddingTop="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:layout_weight="0.9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:text="Chats"
+                android:fontFamily="@font/inter_regular"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/filter"
+                android:padding="4sp"
+                android:layout_weight="0.1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/filter_icon"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/phone_number_bg"
+            android:hint="Search Message Here..."
+            android:drawableStart="@drawable/search_icon"
+            android:paddingStart="16sp"
+            android:paddingEnd="16sp"
+            android:paddingTop="12sp"
+            android:paddingBottom="12sp"
+            android:drawablePadding="8sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginTop="12sp"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:paddingStart="20sp"
+            android:paddingEnd="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/empty_msg_icon"/>
+
+            <TextView
+                android:layout_marginBottom="7sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Your Message Still Empty"
+                android:textSize="20sp"
+                android:textColor="#404040"
+                android:gravity="center"
+                android:fontFamily="@font/inter_regular"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Let’s start your first message, let’s try to message your friend or your family"
+                android:textSize="14sp"
+                android:textColor="#9E9E9E"
+                android:gravity="center"
+                android:fontFamily="@font/inter_regular"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

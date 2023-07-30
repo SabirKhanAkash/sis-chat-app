@@ -3,7 +3,6 @@ package com.akash.sischatapp.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import com.akash.sischatapp.databinding.ActivityRegisterFinalPageBinding
 import com.akash.sischatapp.model.User
@@ -11,11 +10,8 @@ import com.akash.sischatapp.util.LoadingDialog
 import com.akash.sischatapp.util.SharedPref
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import showTopToast
-import java.lang.Exception
 import java.util.Date
 
 class RegisterFinalPage : AppCompatActivity() {
@@ -33,9 +29,8 @@ class RegisterFinalPage : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         storage = FirebaseStorage.getInstance()
-        database = FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app")
-
-//        val database = Firebase.database
+        database =
+            FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app")
 
         binding!!.back.setOnClickListener { onBackPressed() }
         binding!!.uploadBtn.setOnClickListener {
@@ -50,8 +45,8 @@ class RegisterFinalPage : AppCompatActivity() {
                 val reference = storage!!.reference.child("Profile").child(auth!!.uid!!)
                 reference.putFile(selectedImage!!).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        reference.downloadUrl.addOnCompleteListener { uri ->
-                            val imageUri = uri.toString()
+                        reference.downloadUrl.addOnCompleteListener {
+                            val imageUrl = it.result.toString()
                             val uid = auth!!.uid
                             val phone = auth!!.currentUser!!.phoneNumber
                             val fullName: String? =
@@ -59,7 +54,7 @@ class RegisterFinalPage : AppCompatActivity() {
                             val userName: String? =
                                 sharedPref.getString(applicationContext, "user_name")
                             val bio: String? = sharedPref.getString(applicationContext, "bio")
-                            val user = User(uid, fullName, userName, bio, phone, imageUri)
+                            val user = User(uid, fullName, userName, bio, phone, imageUrl)
 //                            loadingDialog.dismissLoading()
                             try {
                                 database!!.reference
@@ -67,25 +62,47 @@ class RegisterFinalPage : AppCompatActivity() {
                                     .child(uid!!)
                                     .setValue(user)
                                     .addOnCompleteListener { userTask ->
-                                    loadingDialog.dismissLoading()
-                                        if(userTask.isSuccessful) {
-                                            sharedPref.setString(applicationContext, "is_registered", "true")
-                                            startActivity(Intent(this@RegisterFinalPage, ConfirmRegistation::class.java))
+                                        loadingDialog.dismissLoading()
+                                        if (userTask.isSuccessful) {
+                                            sharedPref.setString(
+                                                applicationContext,
+                                                "is_registered",
+                                                "true"
+                                            )
+                                            startActivity(
+                                                Intent(
+                                                    this@RegisterFinalPage,
+                                                    ConfirmRegistation::class.java
+                                                )
+                                            )
                                             finish()
-                                        }
-                                        else {
-                                            showTopToast(applicationContext, "Something went wrong! Try again", "short", "negative")
+                                        } else {
+                                            showTopToast(
+                                                applicationContext,
+                                                "Something went wrong! Try again",
+                                                "short",
+                                                "negative"
+                                            )
                                         }
                                     }
                                     .addOnFailureListener {
-                                        showTopToast(applicationContext, "CANCELLED", "short", "neutral")
+                                        showTopToast(
+                                            applicationContext,
+                                            "CANCELLED",
+                                            "short",
+                                            "neutral"
+                                        )
                                     }
                             } catch (e: Exception) {
-                                showTopToast(applicationContext, e.printStackTrace().toString(), "long", "neutral")
+                                showTopToast(
+                                    applicationContext,
+                                    e.printStackTrace().toString(),
+                                    "long",
+                                    "neutral"
+                                )
                             }
                         }
-                    }
-                    else {
+                    } else {
                         val uid = auth!!.uid
                         val phone = auth!!.currentUser!!.phoneNumber
                         val fullName: String? =
@@ -107,8 +124,7 @@ class RegisterFinalPage : AppCompatActivity() {
 //                        showTopSideToast(applicationContext, "Sorry! photo upload failed", "short")
                     }
                 }
-            }
-            else {
+            } else {
                 loadingDialog.dismissLoading()
                 showTopToast(
                     this@RegisterFinalPage,
@@ -123,8 +139,8 @@ class RegisterFinalPage : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(data != null) {
-            if(data.data != null) {
+        if (data != null) {
+            if (data.data != null) {
                 val uri = data.data
                 val storage = FirebaseStorage.getInstance()
                 val time = Date().time
@@ -132,7 +148,7 @@ class RegisterFinalPage : AppCompatActivity() {
                     .child("Profile")
                     .child(time.toString() + "")
                 reference.putFile(uri!!).addOnCompleteListener { task ->
-                    if(task.isSuccessful) {
+                    if (task.isSuccessful) {
                         reference.downloadUrl.addOnCompleteListener { uri ->
                             val filePath = uri.toString()
                             val obj = HashMap<String, Any>()
@@ -140,12 +156,15 @@ class RegisterFinalPage : AppCompatActivity() {
                             database!!.reference
                                 .child("users")
                                 .child(FirebaseAuth.getInstance().uid!!)
-                                .updateChildren(obj).addOnSuccessListener {  }
+                                .updateChildren(obj).addOnSuccessListener {
+                                    showTopToast(applicationContext, "SUCCESS", "Short", "positive")
+                                }
                         }
                     }
                 }
                 binding!!.uploadBtn.setImageURI(data.data)
                 selectedImage = data.data
+                val c = 2
             }
         }
     }

@@ -2,14 +2,12 @@ package com.akash.sischatapp.ui
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import com.akash.sischatapp.databinding.ActivityRegisterPageOneBinding
 import com.akash.sischatapp.util.SharedPref
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 
@@ -36,20 +34,20 @@ class RegisterPageOne : AppCompatActivity() {
 
             val isFullNameValid = Pattern.compile("^[a-zA-Z ]+$").matcher(fullName).matches()
             val isUserNameValid = Pattern.compile("^[a-zA-Z0-9._]+$").matcher(userName).matches()
-            if(fullName.isEmpty() || !isFullNameValid)
+            if (fullName.isEmpty() || !isFullNameValid)
                 binding!!.fullNameEt.error = "Please type your full valid name"
             else
-                sharedPref!!.setString(applicationContext, "full_name", fullName)
-            if(userName.isEmpty() || !isUserNameValid)
+                sharedPref.setString(applicationContext, "full_name", fullName)
+            if (userName.isEmpty() || !isUserNameValid)
                 binding!!.usernameEt.error = "Please type a valid username"
             else
-                sharedPref!!.setString(applicationContext, "user_name", userName)
-            if(bio.isEmpty())
+                sharedPref.setString(applicationContext, "user_name", userName)
+            if (bio.isEmpty())
                 binding!!.bioEt.error = "Please type something about yourself"
             else
-                sharedPref!!.setString(applicationContext, "bio", bio)
+                sharedPref.setString(applicationContext, "bio", bio)
 
-            if(fullName.isNotEmpty() && userName.isNotEmpty() && bio.isNotEmpty()) {
+            if (fullName.isNotEmpty() && userName.isNotEmpty() && bio.isNotEmpty()) {
                 startActivity(Intent(this@RegisterPageOne, RegisterFinalPage::class.java))
             }
 

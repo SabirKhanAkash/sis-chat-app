@@ -7,11 +7,11 @@ import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import com.akash.sischatapp.R
 import com.akash.sischatapp.databinding.ActivityOtpVerifyBinding
 import com.akash.sischatapp.util.LoadingDialog
+import com.akash.sischatapp.util.SharedPref
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -22,6 +22,7 @@ import showTopToast
 import java.util.concurrent.TimeUnit
 
 class OtpVerify : AppCompatActivity() {
+    private val sharedPref: SharedPref = SharedPref()
     var countryCode: String = "+88"
     var binding: ActivityOtpVerifyBinding? = null
     var auth: FirebaseAuth? = null
@@ -42,7 +43,7 @@ class OtpVerify : AppCompatActivity() {
         val phone = countryCode + intent.getStringExtra("phone")
         binding!!.phone.text = "Check your SMS messages. we've sent the verification code to $phone"
 
-        val options = PhoneAuthOptions.newBuilder(auth!!).setPhoneNumber(phone!!)
+        val options = PhoneAuthOptions.newBuilder(auth!!).setPhoneNumber(phone)
             .setTimeout(60L, TimeUnit.SECONDS).setActivity(this@OtpVerify)
             .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                 override fun onVerificationCompleted(p0: PhoneAuthCredential) {
@@ -52,7 +53,12 @@ class OtpVerify : AppCompatActivity() {
                 override fun onVerificationFailed(p0: FirebaseException) {
                     val msg: FirebaseException = p0
                     Log.i("TAG", msg.localizedMessage!!.toString())
-                    showTopToast(this@OtpVerify, "Sorry! " + msg.localizedMessage!!.toString(), "short", "negative")
+                    showTopToast(
+                        this@OtpVerify,
+                        "Sorry! " + msg.localizedMessage!!.toString(),
+                        "short",
+                        "negative"
+                    )
                     loadingDialog.dismissLoading()
                     finish()
                 }
@@ -86,8 +92,15 @@ class OtpVerify : AppCompatActivity() {
                 if (task.isSuccessful) {
                     loadingDialog.dismissLoading()
                     var userDetails: FirebaseUser? = task.result.user
-                    startActivity(Intent(this, RegisterPageOne::class.java))
-                    finishAffinity()
+
+                    if (userDetails != null) {
+                        sharedPref.setString(applicationContext, "is_registered", "true")
+                        startActivity(Intent(this, AppBottomNav::class.java))
+                        finishAffinity()
+                    } else {
+                        startActivity(Intent(this, RegisterPageOne::class.java))
+                        finishAffinity()
+                    }
                 } else {
                     loadingDialog.dismissLoading()
                     binding!!.otpView.setText("")

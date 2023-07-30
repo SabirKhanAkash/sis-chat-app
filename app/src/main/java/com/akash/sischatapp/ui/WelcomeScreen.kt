@@ -3,7 +3,6 @@ package com.akash.sischatapp.ui
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import com.akash.sischatapp.R
 import com.akash.sischatapp.util.SharedPref
@@ -26,7 +25,7 @@ class WelcomeScreen : AppCompatActivity() {
         )
 
 
-        if(sharedPref!!.getString(applicationContext,"is_registered") == "true") {
+        if (sharedPref.getString(applicationContext, "is_registered") == "true") {
             startActivity(Intent(this@WelcomeScreen, AppBottomNav::class.java))
             finish()
         }
