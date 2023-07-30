@@ -39,7 +39,6 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:textColor="@color/regular_gray"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -47,6 +46,7 @@
                 android:fontFamily="@font/inter_regular"
                 android:gravity="start"
                 android:text="@string/input_your_phone_number_for_sign_in"
+                android:textColor="@color/regular_gray"
                 android:textSize="16sp" />
 
             <TextView
@@ -56,8 +56,8 @@
                 android:layout_marginBottom="4sp"
                 android:fontFamily="@font/inter_regular"
                 android:gravity="start"
-                android:textColor="@color/regular_gray"
                 android:text="@string/phone_number"
+                android:textColor="@color/regular_gray"
                 android:textSize="14sp" />
 
             <EditText
@@ -69,10 +69,10 @@
                 android:fontFamily="@font/inter_regular"
                 android:hint="@string/input_phone_number"
                 android:inputType="phone"
-                android:textColorHint="@color/medium_gray"
                 android:paddingStart="16sp"
                 android:paddingTop="12sp"
-                android:paddingBottom="12sp" />
+                android:paddingBottom="12sp"
+                android:textColorHint="@color/medium_gray" />
 
             <TextView
                 android:layout_width="match_parent"

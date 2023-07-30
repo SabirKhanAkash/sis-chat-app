@@ -3,15 +3,15 @@
 
     <item
         android:id="@+id/favorite"
-        android:icon="@drawable/back_icon"
         android:contentDescription="@string/back_icon"
-        app:showAsAction="ifRoom"
-        android:title="back_icon" />
+        android:icon="@drawable/back_icon"
+        android:title="back_icon"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/app_bar"
-        android:title="@string/otp_verification"
         android:contentDescription="@string/otp_verification"
+        android:title="@string/otp_verification"
         app:showAsAction="ifRoom" />
 
 </menu>

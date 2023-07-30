@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
     android:weightSum="1"
@@ -92,8 +92,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_gravity="center"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <!--<EditText
@@ -150,26 +150,25 @@
 
                 <com.mukeshsolanki.OtpView
                     android:id="@+id/otp_view"
-                    android:layout_gravity="center"
-                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="phone"
-                    android:textAllCaps="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4.5sp"
                     android:focusableInTouchMode="true"
+                    android:fontFamily="@font/inter_regular"
+                    android:gravity="center"
+                    android:inputType="phone"
+                    android:itemBackground="@drawable/otp_bg"
+                    android:textAllCaps="true"
+                    android:textColor="@color/dark_gray"
+                    android:textStyle="bold"
                     app:OtpHideLineWhenFilled="true"
                     app:OtpItemCount="6"
-                    android:itemBackground="@drawable/otp_bg"
-                    android:textColor="@color/dark_gray"
-                    app:OtpItemSpacing="4.5sp"
-                    app:OtpState_filled="true"
-                    android:layout_marginStart="4.5sp"
-                    android:fontFamily="@font/inter_regular"
-                    android:textStyle="bold"
-                    app:OtpViewType="rectangle"
-                    app:OtpLineColor="@color/gray_color"
                     app:OtpItemRadius="6dp"
-                    />
+                    app:OtpItemSpacing="4.5sp"
+                    app:OtpLineColor="@color/gray_color"
+                    app:OtpState_filled="true"
+                    app:OtpViewType="rectangle" />
 
             </LinearLayout>
 
@@ -178,12 +177,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColor="@color/red_color"
                 android:fontFamily="@font/inter_regular"
                 android:gravity="center"
                 android:paddingTop="20sp"
                 android:paddingBottom="10sp"
                 android:text="@string/invalid_code_msg"
+                android:textColor="@color/red_color"
                 android:textSize="16sp"
                 android:visibility="invisible" />
 
@@ -230,8 +229,8 @@
                 android:fontFamily="@font/inter"
                 android:foreground="?android:selectableItemBackground"
                 android:text="@string/continue_text"
-                android:textStyle="bold"
-                android:textColor="@color/medium_gray" />
+                android:textColor="@color/medium_gray"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
