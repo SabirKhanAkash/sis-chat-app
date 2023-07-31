@@ -7,6 +7,7 @@
     tools:context=".ui.fragment.HomeFragment">
 
     <LinearLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
@@ -69,48 +70,43 @@
 
     </LinearLayout>
 
-    <ScrollView
+<!--    <LinearLayout
+        android:gravity="center"
+        android:id="@+id/no_msg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingStart="20sp"
+        android:paddingEnd="20sp">
 
-        <LinearLayout
-            android:id="@+id/no_msg"
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="vertical"
-            android:paddingStart="20sp"
-            android:paddingEnd="20sp">
+            android:background="@drawable/empty_msg_icon" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/empty_msg_icon" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7sp"
+            android:fontFamily="@font/inter_regular"
+            android:gravity="center"
+            android:text="Your Message Still Empty"
+            android:textColor="#404040"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="7sp"
-                android:fontFamily="@font/inter_regular"
-                android:gravity="center"
-                android:text="Your Message Still Empty"
-                android:textColor="#404040"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_regular"
+            android:gravity="center"
+            android:text="Let’s start your first message, let’s try to message your friend or your family"
+            android:textColor="#9E9E9E"
+            android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_regular"
-                android:gravity="center"
-                android:text="Let’s start your first message, let’s try to message your friend or your family"
-                android:textColor="#9E9E9E"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-    </ScrollView>
+    </LinearLayout>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
