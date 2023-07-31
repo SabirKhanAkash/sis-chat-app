@@ -30,6 +30,7 @@ RecyclerView.Adapter<HomeChatAdapter.HomeChatViewHolder>()
     override fun onBindViewHolder(holder: HomeChatViewHolder, position: Int) {
         val user = userList[position]
         holder.binding.chatUserName.text = user.fullName
+        holder.binding.chatMsgHint.text = user.bio
         Glide
             .with(context)
             .load(user.profileImage)

@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
         loadingDialog.startFragmentLoading()
 
         if(flag == 1) {
-            //binding!!.noMsg.visibility = View.INVISIBLE
+            binding!!.noMsg.visibility = View.INVISIBLE
             database = FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app")
             users = ArrayList<User>()
             homeChatAdapter = HomeChatAdapter(requireContext(), users!!)
@@ -79,9 +79,10 @@ class HomeFragment : Fragment() {
                 })
         }
 
-        return if(flag == 0)
+        return if(flag == 0) {
+            loadingDialog.dismissLoading()
             empty_binding!!.root
-        else
+        } else
             binding!!.root
     }
 }
