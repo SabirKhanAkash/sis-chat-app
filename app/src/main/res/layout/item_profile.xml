@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="18sp"
+    android:paddingStart="20sp"
+    android:paddingEnd="20sp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="56sp"
+                android:layout_height="56sp"
+                android:id="@+id/chat_dp"
+                android:src="@drawable/upload_icon"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:weightSum="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_gravity="left"
+                android:layout_weight="0.90"
+                android:paddingStart="10sp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_marginBottom="4sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="app user"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/inter_regular"
+                    android:textSize="14sp"
+                    android:textColor="@color/dark_gray"
+                    android:id="@+id/chat_user_name"/>
+
+                <TextView
+                    android:ellipsize="end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="How a visual artist redefines success in graphic design How a visual artist redefines success in graphic design"
+                    android:fontFamily="@font/inter_regular"
+                    android:textSize="12sp"
+                    android:textColor="@color/light_gray"
+                    android:id="@+id/chat_msg_hint"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="0.1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_gravity="right"
+                    android:padding="4sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/seen_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/unseen_icon"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="14:00"
+                        android:textColor="@color/light_gray"
+                        android:fontFamily="@font/inter_regular"
+                        android:textSize="10sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_gravity="right"
+                    android:padding="4sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:background="@drawable/unread_msg_icon_bg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9+"
+                        android:paddingStart="7sp"
+                        android:paddingEnd="7sp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/inter_regular"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:weightSum="1"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_gravity="bottom"
+            android:layout_width="56sp"
+            android:layout_height="2sp"
+            android:background="@color/white"/>
+
+        <View
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:layout_width="0dp"
+            android:layout_height="2sp"
+            android:background="#E5E8EB"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
