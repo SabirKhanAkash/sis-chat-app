@@ -16,3 +16,6 @@ local.properties
 .idea/gradle.xml
 .idea/misc.xml
 .idea/misc.xml
+app/.idea/gradle.xml
+app/.idea/misc.xml
+app/.idea/vcs.xml
