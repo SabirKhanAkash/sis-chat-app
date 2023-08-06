@@ -35,16 +35,17 @@ class HomeFragment : Fragment() {
         empty_binding = FragmentEmptyHomeBinding.inflate(layoutInflater)
         loadingDialog.startFragmentLoading()
 
-        if(flag == 1) {
+        if (flag == 1) {
             binding!!.noMsg.visibility = View.INVISIBLE
-            database = FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app")
+            database =
+                FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app")
             users = ArrayList<User>()
             homeChatAdapter = HomeChatAdapter(requireContext(), users!!)
             binding!!.chatRv.layoutManager = LinearLayoutManager(requireContext())
             database.reference
                 .child("users")
                 .child(FirebaseAuth.getInstance().uid!!)
-                .addValueEventListener(object: ValueEventListener {
+                .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         loadingDialog.dismissLoading()
                         user = snapshot.getValue(User::class.java)
@@ -52,20 +53,25 @@ class HomeFragment : Fragment() {
 
                     override fun onCancelled(error: DatabaseError) {
                         loadingDialog.dismissLoading()
-                        showTopToast(requireContext(), "Sorry! Something went wrong...", "short", "negative")
+                        showTopToast(
+                            requireContext(),
+                            "Sorry! Something went wrong...",
+                            "short",
+                            "negative"
+                        )
                     }
 
                 })
             binding!!.chatRv.adapter = homeChatAdapter
             database.reference
                 .child("users")
-                .addValueEventListener(object: ValueEventListener{
+                .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         loadingDialog.dismissLoading()
                         users!!.clear()
                         for (i in snapshot.children) {
-                            val user:User? = i.getValue(User::class.java)
-                            if(!user!!.uid.equals(FirebaseAuth.getInstance().uid))
+                            val user: User? = i.getValue(User::class.java)
+                            if (!user!!.uid.equals(FirebaseAuth.getInstance().uid))
                                 users!!.add(user)
                         }
                         homeChatAdapter!!.notifyDataSetChanged()
@@ -73,13 +79,18 @@ class HomeFragment : Fragment() {
 
                     override fun onCancelled(error: DatabaseError) {
                         loadingDialog.dismissLoading()
-                        showTopToast(requireContext(), "Sorry! Something went wrong...", "short", "negative")
+                        showTopToast(
+                            requireContext(),
+                            "Sorry! Something went wrong...",
+                            "short",
+                            "negative"
+                        )
                     }
 
                 })
         }
 
-        return if(flag == 0) {
+        return if (flag == 0) {
             loadingDialog.dismissLoading()
             empty_binding!!.root
         } else

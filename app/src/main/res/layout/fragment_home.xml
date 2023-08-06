@@ -76,11 +76,11 @@
         android:layout_gravity="center">
 
         <LinearLayout
-            android:gravity="center"
             android:id="@+id/no_msg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
             android:orientation="vertical"
             android:paddingStart="20sp"
             android:paddingEnd="20sp">
@@ -114,10 +114,10 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chat_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/item_profile"
-            android:id="@+id/chat_rv"/>
+            tools:listitem="@layout/item_profile" />
 
     </FrameLayout>
 

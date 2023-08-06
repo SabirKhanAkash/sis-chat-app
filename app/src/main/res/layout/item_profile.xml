@@ -1,115 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_details"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="18sp"
     android:paddingStart="20sp"
-    android:paddingEnd="20sp"
-    android:layout_height="wrap_content">
+    android:paddingTop="18sp"
+    android:paddingEnd="20sp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="56sp"
-                android:layout_height="56sp"
-                android:id="@+id/chat_dp"
-                android:src="@drawable/upload_icon"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:weightSum="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <FrameLayout
+            android:layout_width="60sp"
+            android:layout_height="60sp">
 
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/chat_dp"
+                    android:layout_width="56sp"
+                    android:layout_height="56sp"
+                    android:src="@drawable/upload_icon" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/active_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:src="@drawable/active_icon"
+                android:visibility="invisible" />
+
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_weight="0.90"
-                android:paddingStart="10sp"
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:paddingStart="10sp">
 
                 <TextView
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:layout_marginBottom="4sp"
+                    android:id="@+id/chat_user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="app user"
-                    android:textStyle="bold"
+                    android:layout_marginBottom="4sp"
+                    android:ellipsize="end"
                     android:fontFamily="@font/inter_regular"
-                    android:textSize="14sp"
+                    android:maxLines="1"
+                    android:text="app user"
                     android:textColor="@color/dark_gray"
-                    android:id="@+id/chat_user_name"/>
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:ellipsize="end"
+                    android:id="@+id/chat_msg_hint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/inter_regular"
                     android:maxLines="1"
                     android:text="How a visual artist redefines success in graphic design How a visual artist redefines success in graphic design"
-                    android:fontFamily="@font/inter_regular"
-                    android:textSize="12sp"
                     android:textColor="@color/light_gray"
-                    android:id="@+id/chat_msg_hint"/>
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_weight="0.1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.1"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_gravity="right"
-                    android:padding="4sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_gravity="right"
+                    android:orientation="horizontal"
+                    android:padding="4sp">
 
                     <ImageView
                         android:id="@+id/seen_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/unseen_icon"/>
+                        android:src="@drawable/unseen_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_regular"
                         android:text="14:00"
                         android:textColor="@color/light_gray"
-                        android:fontFamily="@font/inter_regular"
-                        android:textSize="10sp"/>
+                        android:textSize="10sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_gravity="right"
-                    android:padding="4sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_gravity="right"
+                    android:orientation="horizontal"
+                    android:padding="4sp">
 
                     <TextView
-                        android:background="@drawable/unread_msg_icon_bg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="9+"
+                        android:background="@drawable/unread_msg_icon_bg"
+                        android:fontFamily="@font/inter_regular"
                         android:paddingStart="7sp"
                         android:paddingEnd="7sp"
+                        android:text="9+"
                         android:textColor="@color/white"
-                        android:fontFamily="@font/inter_regular"
-                        android:textSize="12sp"/>
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -120,26 +138,25 @@
     </LinearLayout>
 
     <LinearLayout
-        android:weightSum="1"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        android:weightSum="1">
 
         <View
-            android:layout_gravity="bottom"
             android:layout_width="56sp"
             android:layout_height="2sp"
-            android:background="@color/white"/>
+            android:layout_gravity="bottom"
+            android:background="@color/white" />
 
         <View
-            android:layout_weight="1"
-            android:layout_gravity="bottom"
             android:layout_width="0dp"
             android:layout_height="2sp"
-            android:background="#E5E8EB"/>
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="#E5E8EB" />
 
     </LinearLayout>
-
 
 
 </LinearLayout>

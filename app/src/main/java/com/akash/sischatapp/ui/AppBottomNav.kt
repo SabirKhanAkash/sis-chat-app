@@ -63,4 +63,18 @@ class AppBottomNav : AppCompatActivity() {
         navController = navHostFragment.navController
         setupWithNavController(binding!!.bottomNavigationView, navController)
     }
+
+    override fun onResume() {
+        super.onResume()
+        val currentId = FirebaseAuth.getInstance().uid
+        database.reference.child("presence")
+            .child(currentId!!).setValue("Online")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        val currentId = FirebaseAuth.getInstance().uid
+        database.reference.child("presence")
+            .child(currentId!!).setValue("Offline")
+    }
 }
