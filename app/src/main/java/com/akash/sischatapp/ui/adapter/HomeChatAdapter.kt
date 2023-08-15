@@ -33,7 +33,12 @@ class HomeChatAdapter(var context: Context, var userList: ArrayList<User>) :
         holder.binding.chatMsgHint.text = user.bio
 //        holder.binding.activeStatus.visibility = View.VISIBLE
         holder.binding.chatDetails.setOnClickListener {
-            context.startActivity(Intent(context, ChatPage::class.java))
+            context.startActivity(
+                Intent(context, ChatPage::class.java)
+                    .putExtra("name", user.fullName)
+                    .putExtra("dp", user.profileImage)
+                    .putExtra("uid", user.uid)
+            )
         }
         Glide
             .with(context)

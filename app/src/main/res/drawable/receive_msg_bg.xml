@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners
+        android:bottomLeftRadius="8sp"
+        android:bottomRightRadius="8sp"
+        android:topLeftRadius="2sp"
+        android:topRightRadius="8sp" />
+    <solid android:color="@color/received_chat_gray" />
+    <padding
+        android:bottom="8sp"
+        android:left="8sp"
+        android:right="8sp"
+        android:top="8sp" />
+</shape>

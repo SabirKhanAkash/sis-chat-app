@@ -20,4 +20,8 @@
     <color name="regular_gray">#33475E</color>
     <color name="medium_gray">#1A304A</color>
     <color name="dark_gray">#001936</color>
+    <color name="received_chat_gray">#4C5E72</color>
+    <color name="timestamp_color">#B3BAC3</color>
+    <color name="separator_color">#3C3C435C</color>
+    <color name="option_bg_color">#CCEDEDED</color>
 </resources>
