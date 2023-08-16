@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center|top"
     android:background="@drawable/msg_option_bg"
@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/reply_btn"
-        android:layout_width="200sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:drawableEnd="@drawable/reply_icon"
@@ -25,13 +25,13 @@
         android:textSize="17sp" />
 
     <View
-        android:layout_width="200sp"
+        android:layout_width="match_parent"
         android:layout_height="1sp"
         android:background="#5C3C3C43" />
 
     <TextView
         android:id="@+id/copy_btn"
-        android:layout_width="200sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:drawableEnd="@drawable/copy_icon"
@@ -48,13 +48,13 @@
         android:textSize="17sp" />
 
     <View
-        android:layout_width="200sp"
+        android:layout_width="match_parent"
         android:layout_height="1sp"
         android:background="#5C3C3C43" />
 
     <TextView
         android:id="@+id/save_msg_btn"
-        android:layout_width="200sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:drawableEnd="@drawable/bookmark_icon"
@@ -71,13 +71,13 @@
         android:textSize="17sp" />
 
     <View
-        android:layout_width="200sp"
+        android:layout_width="match_parent"
         android:layout_height="1sp"
         android:background="#5C3C3C43" />
 
     <TextView
         android:id="@+id/forward_btn"
-        android:layout_width="200sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:drawableEnd="@drawable/forward_icon"
@@ -94,13 +94,13 @@
         android:textSize="17sp" />
 
     <View
-        android:layout_width="200sp"
+        android:layout_width="match_parent"
         android:layout_height="1sp"
         android:background="#5C3C3C43" />
 
     <TextView
         android:id="@+id/delete_btn"
-        android:layout_width="200sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:drawableEnd="@drawable/trash_icon"
@@ -117,13 +117,13 @@
         android:textSize="17sp" />
 
     <View
-        android:layout_width="200sp"
+        android:layout_width="match_parent"
         android:layout_height="1sp"
         android:background="#5C3C3C43" />
 
     <TextView
         android:id="@+id/delete_all_btn"
-        android:layout_width="200sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:drawableEnd="@drawable/trash_icon"

@@ -1,9 +1,9 @@
 package com.akash.sischatapp.ui.adapter
 
-import android.app.AlertDialog
-import android.content.BroadcastReceiver
 import android.content.Context
-import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +11,9 @@ import android.view.WindowManager
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.akash.sischatapp.R
-import com.akash.sischatapp.databinding.ItemProfileBinding
 import com.akash.sischatapp.databinding.ListviewReceiveMsgBinding
 import com.akash.sischatapp.databinding.ListviewSendMsgBinding
-import com.akash.sischatapp.databinding.PopupMessageOptionBinding
 import com.akash.sischatapp.model.Message
-import com.akash.sischatapp.model.User
-import com.akash.sischatapp.ui.ChatPage
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
@@ -78,12 +74,12 @@ class MessageAdapter(
             }
             viewHolder.binding.chatBody.text = message.message
             viewHolder.itemView.setOnLongClickListener {
-//                val view = LayoutInflater.from(context).inflate(R.layout.popup_message_option, null)
-//                val  binding: PopupMessageOptionBinding = PopupMessageOptionBinding.bind(view)
-                msgOptionPopUp = BottomSheetDialog(context, com.google.android.material.R.style.Theme_Material3_Light_BottomSheetDialog)
+                msgOptionPopUp = BottomSheetDialog(context, R.style.BottomSheetDialogTheme)
                 msgOptionPopUp.setContentView(R.layout.popup_message_option)
                 msgOptionPopUp.window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
                 msgOptionPopUp.window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+                msgOptionPopUp.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                msgOptionPopUp.window!!.setGravity(Gravity.CENTER)
                 msgOptionPopUp.setCancelable(true)
 
                 var _reply = msgOptionPopUp.window!!.findViewById<View>(R.id.reply_btn) as TextView
@@ -96,7 +92,7 @@ class MessageAdapter(
                 _deleteAll.setOnClickListener {
                     message.message = "This message is removed"
                     message.messageId.let { it1->
-                        FirebaseDatabase.getInstance().reference
+                        FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app").reference
                             .child("chats")
                             .child(senderRoom)
                             .child("message")
@@ -104,7 +100,7 @@ class MessageAdapter(
                             .setValue(message)
                     }
                     message.messageId.let { it1->
-                        FirebaseDatabase.getInstance().reference
+                        FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app").reference
                             .child("chats")
                             .child(receiverRoom)
                             .child("message")
@@ -116,7 +112,7 @@ class MessageAdapter(
 
                 _delete.setOnClickListener {
                     message.messageId.let { it1 ->
-                        FirebaseDatabase.getInstance().reference
+                        FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app").reference
                             .child("chats")
                             .child(senderRoom)
                             .child("message")
@@ -148,13 +144,15 @@ class MessageAdapter(
 //                val  binding: PopupMessageOptionBinding = PopupMessageOptionBinding.bind(view)
                 msgOptionPopUp = BottomSheetDialog(
                     context,
-                    com.google.android.material.R.style.Theme_Material3_Light_BottomSheetDialog
+                    R.style.BottomSheetDialogTheme
                 )
                 msgOptionPopUp.setContentView(R.layout.popup_message_option)
                 msgOptionPopUp.window!!.setLayout(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
+                msgOptionPopUp.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                msgOptionPopUp.window!!.setGravity(Gravity.CENTER)
                 msgOptionPopUp.window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
                 msgOptionPopUp.setCancelable(true)
 
@@ -172,7 +170,7 @@ class MessageAdapter(
                 _deleteAll.setOnClickListener {
                     message.message = "This message is removed"
                     message.messageId.let { it1 ->
-                        FirebaseDatabase.getInstance().reference
+                        FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app").reference
                             .child("chats")
                             .child(senderRoom)
                             .child("message")
@@ -180,7 +178,7 @@ class MessageAdapter(
                             .setValue(message)
                     }
                     message.messageId.let { it1 ->
-                        FirebaseDatabase.getInstance().reference
+                        FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app").reference
                             .child("chats")
                             .child(receiverRoom)
                             .child("message")
@@ -192,7 +190,7 @@ class MessageAdapter(
 
                 _delete.setOnClickListener {
                     message.messageId.let { it1 ->
-                        FirebaseDatabase.getInstance().reference
+                        FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app").reference
                             .child("chats")
                             .child(senderRoom)
                             .child("message")

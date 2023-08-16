@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
+import showTopToast
 import java.util.Calendar
 import java.util.Date
 import kotlin.collections.ArrayList
@@ -39,7 +40,8 @@ class ChatPage : AppCompatActivity() {
         binding = ActivityChatPageBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
-        database = FirebaseDatabase.getInstance()
+        database =
+            FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app")
         storage = FirebaseStorage.getInstance()
         messages = ArrayList()
         val name = intent.getStringExtra("name")
@@ -65,7 +67,6 @@ class ChatPage : AppCompatActivity() {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
                 }
 
             })
@@ -90,7 +91,6 @@ class ChatPage : AppCompatActivity() {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
                 }
 
             })
@@ -123,7 +123,7 @@ class ChatPage : AppCompatActivity() {
                         .child(randomKey)
                         .setValue(message)
                         .addOnSuccessListener {
-
+                            showTopToast(applicationContext, "success", "short", "positive")
                         }
                 }
         }
@@ -138,11 +138,9 @@ class ChatPage : AppCompatActivity() {
         val handler = Handler()
         binding!!.msgEt.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("Not yet implemented")
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("Not yet implemented")
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -208,6 +206,9 @@ class ChatPage : AppCompatActivity() {
                                                 .addOnSuccessListener { }
                                         }
                                 }
+                            }
+                            else {
+                                showTopToast(applicationContext, task.result.toString(), "short", "positive")
                             }
                         }
                 }
