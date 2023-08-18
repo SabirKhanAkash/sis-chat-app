@@ -56,7 +56,7 @@ class ChatPage : AppCompatActivity() {
         receiverUid = intent.getStringExtra("uid")
         senderUid = FirebaseAuth.getInstance().uid
         database!!.reference
-            .child("Presence")
+            .child("presence")
             .child(receiverUid!!)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -114,7 +114,7 @@ class ChatPage : AppCompatActivity() {
                 .updateChildren(lastMsgObj)
             database!!.reference.child("chats")
                 .child(senderRoom!!)
-                .child("messages")
+                .child("message")
                 .child(randomKey!!)
                 .setValue(message).addOnSuccessListener {
                     database!!.reference.child("chats")
@@ -144,7 +144,7 @@ class ChatPage : AppCompatActivity() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                database!!.reference.child("Presence")
+                database!!.reference.child("presence")
                     .child(senderUid!!)
                     .setValue("typing...")
                 handler.removeCallbacksAndMessages(null)
@@ -152,7 +152,7 @@ class ChatPage : AppCompatActivity() {
             }
 
             var userStoppedTyping = Runnable {
-                database!!.reference.child("Presence")
+                database!!.reference.child("presence")
                     .child(senderUid!!)
                     .setValue("Online")
 
@@ -194,13 +194,13 @@ class ChatPage : AppCompatActivity() {
                                         .updateChildren(lastMsgObj)
                                     database!!.reference.child("chats")
                                         .child(senderRoom!!)
-                                        .child("messages")
+                                        .child("message")
                                         .child(randomKey!!)
                                         .setValue(message)
                                         .addOnSuccessListener {
                                             database!!.reference.child("chats")
                                                 .child(receiverRoom!!)
-                                                .child("messages")
+                                                .child("message")
                                                 .child(randomKey)
                                                 .setValue(message)
                                                 .addOnSuccessListener { }
@@ -219,7 +219,7 @@ class ChatPage : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val currentId = FirebaseAuth.getInstance().uid
-        database!!.reference.child("Presence")
+        database!!.reference.child("presence")
             .child(currentId!!)
             .setValue("online")
     }
@@ -227,7 +227,7 @@ class ChatPage : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         val currentId = FirebaseAuth.getInstance().uid
-        database!!.reference.child("Presence")
+        database!!.reference.child("presence")
             .child(currentId!!)
             .setValue("offline")
     }
