@@ -7,7 +7,7 @@ class Message {
     var imageUrl: String? = null
     var timeStamp: Long = 0
 
-    constructor(){}
+    constructor() {}
     constructor(
         message: String?,
         senderId: String?,

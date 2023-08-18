@@ -24,7 +24,8 @@ class RegisterPageOne : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         storage = FirebaseStorage.getInstance()
-        database = FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app")
+        database =
+            FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app")
 
         binding!!.back.setOnClickListener { onBackPressed() }
         binding!!.continueBtn.setOnClickListener {

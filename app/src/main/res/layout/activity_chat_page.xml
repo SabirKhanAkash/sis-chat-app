@@ -96,9 +96,9 @@
         android:background="@color/gray_color" />
 
     <LinearLayout
-        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:paddingStart="20sp"
         android:paddingTop="26sp"

@@ -1,55 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/mLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingEnd="80sp"
-        android:paddingBottom="16sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:paddingBottom="16sp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/receive_msg_bg">
+            android:background="@drawable/receive_msg_bg"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/chat_body"
-                android:fontFamily="@font/inter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="Hi! My Hello World."
-                android:textSize="14sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/timestamp"
-                android:layout_gravity="right"
-                android:fontFamily="@font/inter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
+                android:layout_gravity="right"
+                android:fontFamily="@font/inter"
                 android:text="09:00 am"
-                android:textColor="@color/timestamp_color" />
+                android:textColor="@color/timestamp_color"
+                android:textSize="10sp" />
 
         </LinearLayout>
 
         <ImageView
             android:id="@+id/img"
-            android:layout_margin="5sp"
-            android:visibility="gone"
-            android:scaleType="centerCrop"
             android:layout_width="200dp"
             android:layout_height="130dp"
-            android:src="@drawable/image_placeholder"/>
+            android:layout_margin="5sp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image_placeholder"
+            android:visibility="gone" />
 
     </LinearLayout>
-
 
 
 </LinearLayout>

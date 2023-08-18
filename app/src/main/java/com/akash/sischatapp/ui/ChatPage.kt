@@ -22,7 +22,6 @@ import com.google.firebase.storage.FirebaseStorage
 import showTopToast
 import java.util.Calendar
 import java.util.Date
-import kotlin.collections.ArrayList
 
 class ChatPage : AppCompatActivity() {
     var binding: ActivityChatPageBinding? = null
@@ -206,9 +205,13 @@ class ChatPage : AppCompatActivity() {
                                                 .addOnSuccessListener { }
                                         }
                                 }
-                            }
-                            else {
-                                showTopToast(applicationContext, task.result.toString(), "short", "positive")
+                            } else {
+                                showTopToast(
+                                    applicationContext,
+                                    task.result.toString(),
+                                    "short",
+                                    "positive"
+                                )
                             }
                         }
                 }

@@ -11,7 +11,6 @@ import android.view.WindowManager
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.akash.sischatapp.R
-import com.akash.sischatapp.databinding.ListviewReceiveMsgBinding
 import com.akash.sischatapp.databinding.ListviewSendMsgBinding
 import com.akash.sischatapp.model.Message
 import com.bumptech.glide.Glide
@@ -76,7 +75,10 @@ class MessageAdapter(
             viewHolder.itemView.setOnLongClickListener {
                 msgOptionPopUp = BottomSheetDialog(context, R.style.BottomSheetDialogTheme)
                 msgOptionPopUp.setContentView(R.layout.popup_message_option)
-                msgOptionPopUp.window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+                msgOptionPopUp.window!!.setLayout(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
                 msgOptionPopUp.window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
                 msgOptionPopUp.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 msgOptionPopUp.window!!.setGravity(Gravity.CENTER)
@@ -84,14 +86,18 @@ class MessageAdapter(
 
                 var _reply = msgOptionPopUp.window!!.findViewById<View>(R.id.reply_btn) as TextView
                 var __copy = msgOptionPopUp.window!!.findViewById<View>(R.id.copy_btn) as TextView
-                var __save = msgOptionPopUp.window!!.findViewById<View>(R.id.save_msg_btn) as TextView
-                var __forward = msgOptionPopUp.window!!.findViewById<View>(R.id.forward_btn) as TextView
-                var _delete = msgOptionPopUp.window!!.findViewById<View>(R.id.delete_btn) as TextView
-                var _deleteAll = msgOptionPopUp.window!!.findViewById<View>(R.id.delete_all_btn) as TextView
+                var __save =
+                    msgOptionPopUp.window!!.findViewById<View>(R.id.save_msg_btn) as TextView
+                var __forward =
+                    msgOptionPopUp.window!!.findViewById<View>(R.id.forward_btn) as TextView
+                var _delete =
+                    msgOptionPopUp.window!!.findViewById<View>(R.id.delete_btn) as TextView
+                var _deleteAll =
+                    msgOptionPopUp.window!!.findViewById<View>(R.id.delete_all_btn) as TextView
 
                 _deleteAll.setOnClickListener {
                     message.message = "This message is removed"
-                    message.messageId.let { it1->
+                    message.messageId.let { it1 ->
                         FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app").reference
                             .child("chats")
                             .child(senderRoom)
@@ -99,7 +105,7 @@ class MessageAdapter(
                             .child(it1!!)
                             .setValue(message)
                     }
-                    message.messageId.let { it1->
+                    message.messageId.let { it1 ->
                         FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app").reference
                             .child("chats")
                             .child(receiverRoom)
@@ -125,10 +131,9 @@ class MessageAdapter(
                 msgOptionPopUp.show()
                 false
             }
-        }
-        else {
+        } else {
             val viewHolder = holder as ReceivedMsgViewHolder
-            if(message.message.equals("photo")) {
+            if (message.message.equals("photo")) {
                 viewHolder.binding.img.visibility = View.VISIBLE
                 viewHolder.binding.chatBody.visibility = View.GONE
                 viewHolder.binding.mLinear.visibility = View.GONE
