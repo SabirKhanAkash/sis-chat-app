@@ -96,35 +96,35 @@ class ChatPage : AppCompatActivity() {
 
         binding!!.send.setOnClickListener {
             val messageTxt: String = binding!!.msgEt.text.toString()
-            val date = Date()
-            val message = Message(messageTxt, senderUid, date.time)
+            if (messageTxt.isNotEmpty()) {
+                val date = Date()
+                val message = Message(messageTxt, senderUid, date.time)
 
-            binding!!.msgEt.text.clear()
-            val randomKey = database!!.reference.push().key
-            val lastMsgObj = HashMap<String, Any>()
-            lastMsgObj["lastMsg"] = message.message!!
-            lastMsgObj["lastMsgTime"] = date.time
+                binding!!.msgEt.text.clear()
+                val randomKey = database!!.reference.push().key
+                val lastMsgObj = HashMap<String, Any>()
+                lastMsgObj["lastMsg"] = message.message!!
+                lastMsgObj["lastMsgTime"] = date.time
 
-            database!!.reference.child("chats")
-                .child(senderRoom!!)
-                .updateChildren(lastMsgObj)
-            database!!.reference.child("chats")
-                .child(receiverRoom!!)
-                .updateChildren(lastMsgObj)
-            database!!.reference.child("chats")
-                .child(senderRoom!!)
-                .child("message")
-                .child(randomKey!!)
-                .setValue(message).addOnSuccessListener {
-                    database!!.reference.child("chats")
-                        .child(receiverRoom!!)
-                        .child("message")
-                        .child(randomKey)
-                        .setValue(message)
-                        .addOnSuccessListener {
-                            showTopToast(applicationContext, "success", "short", "positive")
-                        }
-                }
+                database!!.reference.child("chats")
+                    .child(senderRoom!!)
+                    .updateChildren(lastMsgObj)
+                database!!.reference.child("chats")
+                    .child(receiverRoom!!)
+                    .updateChildren(lastMsgObj)
+                database!!.reference.child("chats")
+                    .child(senderRoom!!)
+                    .child("message")
+                    .child(randomKey!!)
+                    .setValue(message).addOnSuccessListener {
+                        database!!.reference.child("chats")
+                            .child(receiverRoom!!)
+                            .child("message")
+                            .child(randomKey)
+                            .setValue(message)
+                            .addOnSuccessListener { }
+                    }
+            }
         }
 
         binding!!.attachment.setOnClickListener {
@@ -153,7 +153,7 @@ class ChatPage : AppCompatActivity() {
             var userStoppedTyping = Runnable {
                 database!!.reference.child("presence")
                     .child(senderUid!!)
-                    .setValue("Online")
+                    .setValue("online")
 
             }
 

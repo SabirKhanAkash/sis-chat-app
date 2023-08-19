@@ -68,13 +68,15 @@ class AppBottomNav : AppCompatActivity() {
         super.onResume()
         val currentId = FirebaseAuth.getInstance().uid
         database.reference.child("presence")
-            .child(currentId!!).setValue("Online")
+            .child(currentId!!).setValue("online")
     }
 
     override fun onPause() {
         super.onPause()
         val currentId = FirebaseAuth.getInstance().uid
-        database.reference.child("presence")
-            .child(currentId!!).setValue("Offline")
+        if (currentId != null) {
+            database.reference.child("presence")
+                .child(currentId).setValue("offline")
+        }
     }
 }

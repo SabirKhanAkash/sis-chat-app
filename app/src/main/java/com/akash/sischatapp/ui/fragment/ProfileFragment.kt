@@ -17,6 +17,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 
 class ProfileFragment : Fragment() {
@@ -24,6 +25,7 @@ class ProfileFragment : Fragment() {
     private val sharedPref: SharedPref = SharedPref()
     lateinit var auth: FirebaseAuth
     lateinit var storage: FirebaseStorage
+    lateinit var database: FirebaseDatabase
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +39,8 @@ class ProfileFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
         storage = FirebaseStorage.getInstance()
+        database =
+            FirebaseDatabase.getInstance("https://sis-chat-app-d78c3-default-rtdb.asia-southeast1.firebasedatabase.app")
 
         binding!!.phoneNo.text = FirebaseAuth.getInstance().currentUser!!.phoneNumber
         binding!!.fullname.text = sharedPref.getString(requireContext(), "full_name")
@@ -109,8 +113,11 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(context, EditProfile::class.java))
         }
         binding!!.logout.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
+            database.reference.child("presence")
+                .child(auth.uid!!).setValue("offline")
+            auth.signOut()
             sharedPref.clearData(requireContext())
+            requireActivity().finish()
             startActivity(
                 Intent(
                     requireContext(),

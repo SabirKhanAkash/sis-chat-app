@@ -11,12 +11,16 @@ import android.view.WindowManager
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.akash.sischatapp.R
+import com.akash.sischatapp.databinding.ListviewReceiveMsgBinding
 import com.akash.sischatapp.databinding.ListviewSendMsgBinding
 import com.akash.sischatapp.model.Message
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class MessageAdapter(
     var context: Context,
@@ -59,12 +63,15 @@ class MessageAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val message = messages[position]
+        val simple: DateFormat = SimpleDateFormat("dd MMM yyyy hh:mm a")
         if (holder.javaClass == SentMsgViewHolder::class.java) {
             val viewHolder = holder as SentMsgViewHolder
             if (message.message.equals("photo")) {
-                viewHolder.binding.img.visibility = View.VISIBLE
                 viewHolder.binding.chatBody.visibility = View.GONE
+                viewHolder.binding.timestamp.visibility = View.GONE
                 viewHolder.binding.mLinear.visibility = View.GONE
+                viewHolder.binding.imageFl.visibility = View.VISIBLE
+                viewHolder.binding.imgTimestamp.text = simple.format(Date(message.timeStamp))
                 Glide
                     .with(context)
                     .load(message.imageUrl)
@@ -72,6 +79,7 @@ class MessageAdapter(
                     .into(viewHolder.binding.img)
             }
             viewHolder.binding.chatBody.text = message.message
+            viewHolder.binding.timestamp.text = simple.format(Date(message.timeStamp))
             viewHolder.itemView.setOnLongClickListener {
                 msgOptionPopUp = BottomSheetDialog(context, R.style.BottomSheetDialogTheme)
                 msgOptionPopUp.setContentView(R.layout.popup_message_option)
@@ -134,9 +142,11 @@ class MessageAdapter(
         } else {
             val viewHolder = holder as ReceivedMsgViewHolder
             if (message.message.equals("photo")) {
-                viewHolder.binding.img.visibility = View.VISIBLE
                 viewHolder.binding.chatBody.visibility = View.GONE
+                viewHolder.binding.timestamp.visibility = View.GONE
                 viewHolder.binding.mLinear.visibility = View.GONE
+                viewHolder.binding.imageFl.visibility = View.VISIBLE
+                viewHolder.binding.imgTimestamp.text = simple.format(Date(message.timeStamp))
                 Glide
                     .with(context)
                     .load(message.imageUrl)
@@ -144,9 +154,8 @@ class MessageAdapter(
                     .into(viewHolder.binding.img)
             }
             viewHolder.binding.chatBody.text = message.message
+            viewHolder.binding.timestamp.text = simple.format(Date(message.timeStamp))
             viewHolder.itemView.setOnLongClickListener {
-//                val view = LayoutInflater.from(context).inflate(R.layout.popup_message_option, null)
-//                val  binding: PopupMessageOptionBinding = PopupMessageOptionBinding.bind(view)
                 msgOptionPopUp = BottomSheetDialog(
                     context,
                     R.style.BottomSheetDialogTheme
@@ -216,7 +225,7 @@ class MessageAdapter(
     }
 
     inner class ReceivedMsgViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val binding: ListviewSendMsgBinding = ListviewSendMsgBinding.bind(itemView)
+        val binding: ListviewReceiveMsgBinding = ListviewReceiveMsgBinding.bind(itemView)
     }
 
     init {
